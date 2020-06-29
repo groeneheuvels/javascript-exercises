@@ -4,7 +4,7 @@ const faker = require("faker");
 faker.seed(1);
 
 const persons = Array.from(new Array(10)).map((_) => ({
-  name: `${faker.name.prefix} ${faker.name.lastName()}`,
+  name: `${faker.name.prefix()} ${faker.name.lastName()}`,
   pets: Array.from(new Array(1 + faker.random.number(5))).map((_) => ({
     name: `Little ${faker.name.lastName()}`,
     age: faker.random.number(20),
