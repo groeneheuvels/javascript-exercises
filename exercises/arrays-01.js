@@ -35,7 +35,7 @@ Use console.log to show the result.
 You may only use for loops, and no array methods.
 */
 
-function convertTable(array) {
+/* function convertTable(array) {
   const output = [];
   const departments = array[0];
   const employeeRows = array.slice(1);
@@ -58,28 +58,20 @@ function convertTable(array) {
   return output;
 }
 
-console.log(convertTable(table));
+console.log(convertTable(table)); */
 
 /* EXERCISE 2
 Get the same result as EXERCISE 1, but now with only chained array 
 methods and no for loops.
 */
 
-const convertedTable = table.slice(1).reduce((output, employeeRow) => {
-  const departments = table[0];
-  const newObject = {};
-  for (
-    let employeeIndex = 0;
-    employeeIndex < employeeRow.length;
-    employeeIndex++
-  ) {
-    newObject[departments[employeeIndex]] = employeeRow[employeeIndex];
-  }
-  output.push(newObject);
-  return output;
-}, []);
-
-console.log(convertedTable);
+const convertedTable = table.slice(1).map((row) =>
+  row.reduce((rowObject, employee, employeeIndex) => {
+    const departments = table[0];
+    rowObject[departments[employeeIndex]] = employee;
+    return rowObject;
+  }, {})
+);
 
 /* EXERCISE 3 
 Convert `table` to a single object that has a key for each department 
@@ -88,7 +80,7 @@ and arrays of people in those departments as values.
 You can use for loops or array methods.
 */
 
-function departmentColumns(array) {
+/* function departmentColumns(array) {
   const departments = array[0];
   const employees = array.slice(1);
   const sortedByColumn = [];
@@ -125,4 +117,4 @@ const employeesByDepartment = departmentColumns(table).reduce(
   {}
 );
 
-console.log(employeesByDepartment);
+console.log(employeesByDepartment); */
