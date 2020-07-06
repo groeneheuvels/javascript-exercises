@@ -13,12 +13,29 @@ const persons = Array.from(new Array(10)).map((_) => ({
     })),
   })),
 }));
-console.log(JSON.stringify(persons, null, 2));
+//console.log(JSON.stringify(persons, null, 2));
 
 /* EXERCISE 1
 Get an array of the names of vets that take care of 
 pets that are older than 10. 
  */
+
+function findGeriatricVets(persons) {
+  const oldPetsVets = [];
+  for (const person of persons) {
+    for (const currentPet of person.pets) {
+      if (currentPet.age > 10) {
+        oldPetsVets.push(currentPet.vets);
+      }
+    }
+  }
+  return oldPetsVets
+    .flat()
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .reverse();
+}
+
+console.log(findGeriatricVets(persons));
 
 /* EXERCISE 2
 Get an array of the names of persons that have pets with only
