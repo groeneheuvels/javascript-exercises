@@ -20,7 +20,7 @@ Get an array of the names of vets that take care of
 pets that are older than 10. 
  */
 
-function findGeriatricVets(persons) {
+/* function findGeriatricVets(persons) {
   const oldPetsVets = [];
   for (const person of persons) {
     for (const currentPet of person.pets) {
@@ -35,19 +35,69 @@ function findGeriatricVets(persons) {
     .reverse();
 }
 
-console.log(findGeriatricVets(persons));
+console.log(findGeriatricVets(persons)); */
 
 /* EXERCISE 2
 Get an array of the names of persons that have pets with only
 one vet.
  */
 
+/* function oneVetPets(persons) {
+  const oneVetPetOwners = [];
+  for (currentPerson of persons) {
+    for (currentPet of currentPerson.pets) {
+      const listedOwner = oneVetPetOwners.find(
+        (el) => el.name === currentPerson.name
+      );
+      if (currentPet.vets.length === 1 && !listedOwner) {
+        oneVetPetOwners.push(currentPerson);
+      }
+    }
+  }
+  return oneVetPetOwners;
+}
+
+console.log(oneVetPets(persons)); */
+
 /* EXERCISE 3
  Get the mean age of all the pets combined
  */
+
+/* function averagePetAge(persons) {
+  const petAges = [];
+  for (const currentPerson of persons) {
+    for (const currentPet of currentPerson.pets) {
+      petAges.push(currentPet.age);
+    }
+  }
+  const totalAge = petAges.reduce((total, age) => {
+    return (total = total + age);
+  });
+  return totalAge / petAges.length;
+}
+
+console.log(averagePetAge(persons)); */
 
 /* EXERCISE 4
  Create an array of objects for all the pets, sorted by pet age.
  Each pet object should include the following keys (with their 
   correct values): petName, ownerName, vetName, age.
   */
+
+/* function petList(persons) {
+  const pets = [];
+  for (const currentPerson of persons) {
+    for (const currentPet of currentPerson.pets) {
+      const petObject = {
+        petName: currentPet.name,
+        ownerName: currentPerson.name,
+        vetName: currentPet.vets,
+        age: currentPet.age,
+      };
+      pets.push(petObject);
+    }
+  }
+  return pets.sort((a, b) => a.age - b.age);
+}
+
+console.log(petList(persons)); */
