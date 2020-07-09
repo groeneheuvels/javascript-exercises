@@ -101,3 +101,19 @@ console.log(averagePetAge(persons)); */
 }
 
 console.log(petList(persons)); */
+
+const pets = persons
+  .map((person) =>
+    person.pets.map((pet) => {
+      const petObject = {};
+      petObject.ownerName = person.name;
+      petObject.petName = pet.name;
+      petObject.vetNames = pet.vets.map((vet) => vet.name);
+      petObject.age = pet.age;
+      return petObject;
+    })
+  )
+  .flat()
+  .sort((a, b) => a.age - b.age);
+
+console.log(pets);
